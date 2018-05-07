@@ -6,21 +6,25 @@ module.exports = {
     entry: "./src/js/app.js",
     output: {  path: path.join(__dirname, "./dist/"), filename : 'out.js' },
     watch: true,
-    devtool: "cheap-module-eval-source-map",
+    devtool: "source-map",
     module: {
         rules : [
             {
             test: /\.jsx$/,  exclude: /node_modules/,
             loader: 'babel-loader',
-            query: { presets: ['env', {
+            query: {
+                presets: [
+                ['env', {
                     targets: {
                         browsers: [
-                            '> 1%',
+                            '> 5%',
                             'last 2 versions'
                         ]
                     }
-                }, 'stage-2', 'react'
-                ]}
+                }], 'stage-2', 'react'
+                ]
+            }
+
             },
             {
                 test: /\.css/,
